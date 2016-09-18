@@ -52,7 +52,9 @@ exports.adminRequired = function (req, res, next) {
 // 注册 - 用户保存
 exports.register = function(req, res){
     var _user = req.body;
-    User.findOne({name: _user.name} || {email: _user.email}, function(err, user) {
+    User.findOne({
+        $or : [{name: _user.name},{email: _user.email}]
+    }, function(err, user) {
         var error = {};
         if (err) {
             res.json({

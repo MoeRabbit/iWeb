@@ -8,7 +8,7 @@ var xss = require('xss');
 exports.new = function(req, res) {
     Tag.fetch(function(err, tags) {
         res.render('post', {
-            title: '新文章 | MoeRabbit',
+            title: '新发布 | MoeRabbit',
             article: {},
             tags: tags
         })
@@ -78,18 +78,6 @@ exports.save = function(req, res) {
     }
 };
 
-//exports.list = function(req, res) {
-//    Article.fetch(function(err, articles) {
-//        if(err){
-//            console.log(err);
-//        }
-//        res.render('list-article', {
-//            title: '萌え ♥ 文章管理',
-//            articles: articles
-//        })
-//    });
-//};
-
 exports.del = function(req,res) {
     var id = req.params.id;
     var _user = req.session.user;
@@ -143,7 +131,7 @@ exports.showAll = function(req, res) {
             console.log('error: No User');
             res.redirect('/404');
         } else {
-            .getAll(author, function (err, articles) {
+            Article.getAll(author, function (err, articles) {
                 if (err) {
                     req.flash('error', err);
                     res.redirect('/');

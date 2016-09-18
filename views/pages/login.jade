@@ -1,0 +1,21 @@
+extends ../layout
+block content
+    .content-absolute
+        .half.half-left
+        .half.half-right
+            h3.register-tab
+                a.active(href="javascript:;") 登录
+            form#login.register(method="post" onsubmit="return false;")
+                .i-input
+                    p.i-tip#login-email-tip 请输入正确的邮箱地址
+                    label 邮箱
+                    input#login-email(type='text', placeholder='请输入邮箱')
+                .i-input
+                    p.i-tip#login-pw-tip 密码错误
+                    label 密码
+                    input#login-pw(type='password', placeholder='请输入密码')
+                input.btn#btn-login(type='button', value='登  录')
+                p.i-tip
+                    | ๑乛◡乛๑ 还没有账号，还不快去
+                    a(href='/register') 注册
+                    | ！

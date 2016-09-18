@@ -1,3 +1,29 @@
 extends ../layout
 block content
-	include ../includes/header
+    include ../includes/header
+    .container.main
+        .articles
+            if ( articles && articles.length > 0 )
+                each item in articles
+                    .article
+                        .art-meta.art-meta-left
+                            p.art-author
+                                a(href="/u/#{item.author._id}") #{item.author.name}
+                            p.art-date #{moment(item.meta.createAt).format("YYYY,MMM DD HH:mm")}
+                            p.art-tags
+                                a(href="/tag?tag=#{item.tag._id}&p=0") ##{item.tag.name}
+                            p.art-comment
+                                if item.comment == 0
+                                    a(href="/p/#{item._id}") 暂无评论
+                                else
+                                    a(href="/p/#{item._id}") #{item.comment} 条评论
+                            p.art-pv  已被浏览#{item.pv}次
+                        .art-info
+                            a.art-avatar(href="/u/#{item.author._id}" title="#{item.author.name}")
+                                img(src="#{item.author.avatar}")
+                            a.art-title(href="/p/#{item._id}")
+                                h3 #{item.title}
+                        .art-con !{item.txt}
+            else
+                .posts-empty
+                    p (*´∇｀*) 这里好空旷吖，去其他地方逛逛吧~

@@ -1,0 +1,27 @@
+extends ../layout
+block content
+    .content-absolute
+        .half.half-left
+        .half.half-right
+            h3.register-tab
+                a.active(href='javascript:;') 注册
+            form#register.register(method="post" onsubmit="return false;")
+                .i-input
+                    p.i-tip.err-tip#register-name-tip 请输入正确的昵称，2-12个字符
+                    label 昵称
+                    input#register-name(type='text', placeholder='请输入昵称，2-12个字符')
+                .i-input
+                    p.i-tip.err-tip#register-email-tip 请输入正确的邮箱地址
+                    label 邮箱
+                    input#register-email(type='text', placeholder='请输入邮箱')
+                .i-input
+                    p.i-tip.err-tip#register-pw-tip 请输入密码，6-12个字符
+                    label 密码
+                    input#register-pw(type='password', placeholder='请输入密码,8-16个字符', maxlength='16', minlength='8')
+                input.register-btn#btn-reg(type='submit', value='注  册')
+                p.i-tip
+                    | 已有账号，快去
+                    a(href='/login') 登录
+                    | 吧~
+    script(type="text/javascript" src="./js/login.js")
+        

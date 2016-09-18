@@ -9,16 +9,18 @@ module.exports = function(app){
     });
 
     // Index
-    app.get('/', Index.inedx);
+    app.get('/', Index.index);
 
 
 	/* ＊＊＊ 用户 User ＊＊＊ */
 
-    // 注册 --- /register (post)
-    app.get('/register', User.noLoginRequired, User.showRegister);
+    // 注册 --- /register 
+    app.get('/register',  User.showRegister);
     app.post('/register', User.register);
     
-    // 登陆 --- /login (post)
+    // 登陆 --- /login
+    app.get('/login', User.noLoginRequired, User.showLogin);
+    app.post('/login', User.login);
     // 退出 --- /logout (get)
 
 
